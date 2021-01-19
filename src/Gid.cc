@@ -57,9 +57,9 @@ Number userid::Gid(const CallbackInfo &info)
     return Number::New(env, 0);
   }
 
-  auto utfname = std::string(info[0].As<String>()).c_str();
+  auto name = std::string(info[0].As<String>());
 
-  auto group = getgrnam(utfname);
+  auto group = getgrnam(name.c_str());
 
   if (!group)
   {

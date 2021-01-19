@@ -40,19 +40,19 @@ struct passwd *getpwnam(const char *name);
  * The getgrouplist() function scans the group database (see group(5))
  * to obtain the list of groups that user belongs to.  Up to *ngroups of
  * these groups are returned in the array groups.
- * 
+ *
  * If it was not among the groups defined for user in the group
  * database, then group is included in the list of groups returned by
  * getgrouplist(); typically this argument is specified as the group ID
  * from the password record for user.
- * 
+ *
  * The ngroups argument is a value-result argument: on return it always
  * contains the number of groups found for user, including group; this
  * value may be greater than the number of groups stored in groups.
- * 
+ *
  * @return If the number of groups of which user is a member is less than or
  * equal to *ngroups, then the value *ngroups is returned.
- * 
+ *
  * If the user is a member of more than *ngroups groups, then
  * getgrouplist() returns -1.  In this case, the value returned in
  * *ngroups can be used to resize the buffer passed to a further call
@@ -80,10 +80,10 @@ Array userid::Gids(const CallbackInfo &info)
     return Array::New(env, 0);
   }
 
-  auto username = std::string(info[0].As<String>()).c_str();
+  auto username = std::string(info[0].As<String>());
 
   errno = 0;
-  auto pw = getpwnam(username);
+  auto pw = getpwnam(username.c_str());
 
   if (!pw)
   {
@@ -119,7 +119,7 @@ Array userid::Gids(const CallbackInfo &info)
       return Array::New(env, 0);
     }
 
-    foundGroups = getgrouplist(username, pw->pw_gid, groups, &ngroups);
+    foundGroups = getgrouplist(username.c_str(), pw->pw_gid, groups, &ngroups);
 
     // getgrouplist forces us to guess how many groups the user might be in
     // returns `-1` if we guessed too low
