@@ -1,0 +1,12 @@
+{
+  "configurations": [
+    {
+      "name": "gcc",
+      "includePath": [
+        "${workspaceFolder}/node_modules/node-addon-api",
+        "${workspaceFolder}/node_modules/node-addon-api/external-napi"
+      ]
+    }
+  ],
+  "version": 4
+}
