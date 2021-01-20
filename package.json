@@ -20,7 +20,8 @@
     "!win32"
   ],
   "engines": {
-    "node": ">=8.4.0"
+    "node": ">=8.4.0",
+    "yarn": "Please-use-Npm"
   },
   "scripts": {
     "test": "mocha",
