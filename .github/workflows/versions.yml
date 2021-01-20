@@ -35,7 +35,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: "Debug: Node version"
+      - name: 'Debug: Node version'
         run: node --version
 
       - name: Build

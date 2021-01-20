@@ -10,8 +10,7 @@
 
 typedef uint32_t uid_t;
 typedef uint32_t gid_t;
-struct passwd
-{
+struct passwd {
   char *pw_name;   /* username */
   char *pw_passwd; /* user password */
   uid_t pw_uid;    /* user ID */
@@ -33,18 +32,15 @@ struct passwd *getpwnam(const char *name);
 using namespace Napi;
 using namespace userid;
 
-Object userid::Ids(const CallbackInfo &info)
-{
+Object userid::Ids(const CallbackInfo &info) {
   auto env = info.Env();
 
-  if (info.Length() < 1)
-  {
+  if (info.Length() < 1) {
     TypeError::New(env, "Wrong number of arguments").ThrowAsJavaScriptException();
     return Object::New(env);
   }
 
-  if (!info[0].IsString())
-  {
+  if (!info[0].IsString()) {
     TypeError::New(env, "Argument must be a string").ThrowAsJavaScriptException();
     return Object::New(env);
   }
@@ -52,8 +48,7 @@ Object userid::Ids(const CallbackInfo &info)
   auto utfname = std::string(info[0].As<String>()).c_str();
   auto user = getpwnam(utfname);
 
-  if (!user)
-  {
+  if (!user) {
     Error::New(env, "username not found").ThrowAsJavaScriptException();
     return Object::New(env);
   }

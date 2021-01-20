@@ -7,7 +7,6 @@
  * @param {String} username username
  *
  * @return {Object} object with uid and gid, e.g. { uid: 1, gid: 2 }
- *
  */
 export declare function ids(username: string): { uid: number; gid: number };
 
@@ -17,7 +16,6 @@ export declare function ids(username: string): { uid: number; gid: number };
  * @param {String} username username in /etc/passwd
  *
  * @return {Integer} uid
- *
  */
 export declare function uid(username: string): number;
 
@@ -27,7 +25,6 @@ export declare function uid(username: string): number;
  * @param {String} groupName name of group in /etc/group
  *
  * @return {Integer} gid
- *
  */
 export declare function gid(groupName: string): number;
 
@@ -55,6 +52,5 @@ export declare function username(uid: number): string;
  * @param {String} username name of user in /etc/passwd
  *
  * @return {Array} gid
- *
  */
 export declare function gids(username: string): number[];

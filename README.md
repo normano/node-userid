@@ -23,19 +23,19 @@ This package is not useful on Windows.
 ### Example
 
 ```js
-var userid = require("userid");
+var userid = require('userid');
 
 // get user id
-console.log("root's uid is:", userid.uid("root"));
+console.log("root's uid is:", userid.uid('root'));
 
 // get group id
-console.log("wheel's gid is:", userid.gid("wheel"));
+console.log("wheel's gid is:", userid.gid('wheel'));
 
 // get user name
-console.log("uid 0 name is:", userid.username(0));
+console.log('uid 0 name is:', userid.username(0));
 
 // get group name
-console.log("gid 0 name is:", userid.groupname(0));
+console.log('gid 0 name is:', userid.groupname(0));
 ```
 
 <!-- TODO: Full Docs -->

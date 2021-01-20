@@ -1,29 +1,18 @@
 {
-    "cSpell.words": [
-      "Napi",
-      "Tacklind",
-      "VCCL",
-      "cflags",
-      "coverallsapp",
-      "fvisibility",
-      "gcov",
-      "getent",
-      "getpwnam",
-      "gids",
-      "gmail",
-      "groupname",
-      "gypfile",
-      "jandre",
-      "lcov",
-      "lgcov",
-      "libc",
-      "macOS",
-      "msvs",
-      "npmjs",
-      "npmrc",
-      "passwd",
-      "userid",
-      "xcode"
-    ],
-    "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

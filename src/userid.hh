@@ -3,8 +3,7 @@
 
 #include <napi.h>
 
-namespace userid
-{
+namespace userid {
 using namespace Napi;
 
 String GroupName(const CallbackInfo &info);

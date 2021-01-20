@@ -6,8 +6,7 @@
 using namespace Napi;
 using namespace userid;
 
-Object Init(Env env, Object exports)
-{
+Object Init(Env env, Object exports) {
   exports["ids"] = Function::New(env, &Ids);
   exports["gid"] = Function::New(env, &Gid);
   exports["gids"] = Function::New(env, &Gids);

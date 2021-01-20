@@ -9,8 +9,7 @@
 // Mocks for Windows
 
 typedef uint32_t gid_t;
-struct group
-{
+struct group {
   /**
    * group name
    **/
@@ -38,18 +37,15 @@ struct group *getgrgid(gid_t gid);
 using namespace Napi;
 using namespace userid;
 
-String userid::GroupName(const CallbackInfo &info)
-{
+String userid::GroupName(const CallbackInfo &info) {
   auto env = info.Env();
 
-  if (info.Length() < 1)
-  {
+  if (info.Length() < 1) {
     TypeError::New(env, "Wrong number of arguments").ThrowAsJavaScriptException();
     return String::New(env, "");
   }
 
-  if (!info[0].IsNumber())
-  {
+  if (!info[0].IsNumber()) {
     TypeError::New(env, "Argument must be a number").ThrowAsJavaScriptException();
     return String::New(env, "");
   }
@@ -58,8 +54,7 @@ String userid::GroupName(const CallbackInfo &info)
 
   auto group = getgrgid(gid);
 
-  if (!group)
-  {
+  if (!group) {
     Error::New(env, "gid not found").ThrowAsJavaScriptException();
     return String::New(env, "");
   }
