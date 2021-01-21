@@ -92,7 +92,7 @@ I'm therefore inclined to think it's better to not hold to that final license ch
 Going forward, all published source code (the part that you use as a user of this package) will be all **Public Domain**.
 The rest of this package will stay **GPLv3**.
 
-© 2019 Cameron Tacklind <cameron@tacklind.com>
+© 2021 Cameron Tacklind <cameron@tacklind.com>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
