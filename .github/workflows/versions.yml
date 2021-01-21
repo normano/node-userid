@@ -35,7 +35,16 @@ jobs:
       - name: Build
         run: npm ci
 
+      - name: Add long username for test
+        run: sudo useradd UsernameWithMoreThan15Chars
+
+      - name: Add long groupname for test
+        run: sudo useradd GroupnameWithMoreThan15Chars
+
       - name: Test
         run: npm test
         # Mocha does not work on 4/5
         if: matrix.node >= 6
+        env:
+          LONG_USERNAME_TEST: UsernameWithMoreThan15Chars
+          LONG_GROUPNAME_TEST: GroupnameWithMoreThan15Chars

@@ -33,16 +33,18 @@ jobs:
 
       # Ensure the code works
 
+      - name: Add long username for test
+        run: sudo useradd UsernameWithMoreThan15Chars
+
+      - name: Add long groupname for test
+        run: sudo useradd GroupnameWithMoreThan15Chars
+
       - name: Run Tests with Prepared Git Dependency
         run: npm test
         env:
           MOCHA_IMPORT_OVERRIDE: userid
-      
-      - name: Get usernames on GH
-        run: 'getent passwd | cut -d: -f 1'
-
-      - name: Add test user
-        run: sudo useradd UserNameWithMoreThan15Chars
+          LONG_USERNAME_TEST: UsernameWithMoreThan15Chars
+          LONG_GROUPNAME_TEST: GroupnameWithMoreThan15Chars
 
   test-native-api:
     needs: [install-and-run-from-git]
@@ -61,11 +63,19 @@ jobs:
       - name: 'Debug: List post build files'
         run: find * \( -path node_modules -o -path .git \) -print -prune -o -type f -print | tee /tmp/build.list
 
+      - name: Add long username for test
+        run: sudo useradd UsernameWithMoreThan15Chars
+
+      - name: Add long groupname for test
+        run: sudo useradd GroupnameWithMoreThan15Chars
+
       - name: Run Tests with Prepared Git Dependency
         run: npm test
         env:
           MOCHA_IMPORT_OVERRIDE: ../build/Release/userid.node
-          MOCHA_NATIVE_API_TEST: true
+          MOCHA_NATIVE_API_TEST: true # I put this in for a reason but cannot, for the life of me, remember or figure out why
+          LONG_USERNAME_TEST: UsernameWithMoreThan15Chars
+          LONG_GROUPNAME_TEST: GroupnameWithMoreThan15Chars
 
   checks:
     name: Check - Formatting & Spelling
