@@ -25,8 +25,8 @@
   },
   "scripts": {
     "test": "mocha",
-    "prettier": "prettier ** --check",
-    "spelling": "cspell **",
+    "prettier": "prettier \"**\" --check",
+    "spelling": "cspell \"**\"",
     "coverage": "nyc --reporter=lcov --reporter=text mocha",
     "install": "npm run build",
     "clean": "node-gyp clean",
