@@ -37,6 +37,12 @@ jobs:
         run: npm test
         env:
           MOCHA_IMPORT_OVERRIDE: userid
+      
+      - name: Get usernames on GH
+        run: 'getent passwd | cut -d: -f 1'
+
+      - name: Add test user
+        run: sudo useradd UserNameWithMoreThan15Chars
 
   test-native-api:
     needs: [install-and-run-from-git]
