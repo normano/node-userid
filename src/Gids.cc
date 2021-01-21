@@ -75,10 +75,10 @@ Array userid::Gids(const CallbackInfo &info) {
     return Array::New(env, 0);
   }
 
-  auto username = std::string(info[0].As<String>()).c_str();
+  auto username = std::string(info[0].As<String>());
 
   errno = 0;
-  auto pw = getpwnam(username);
+  auto pw = getpwnam(username.c_str());
 
   if (!pw) {
     // TODO: More verbose error message that includes errno
@@ -111,7 +111,7 @@ Array userid::Gids(const CallbackInfo &info) {
       return Array::New(env, 0);
     }
 
-    foundGroups = getgrouplist(username, pw->pw_gid, groups, &ngroups);
+    foundGroups = getgrouplist(username.c_str(), pw->pw_gid, groups, &ngroups);
 
     // getgrouplist forces us to guess how many groups the user might be in
     // returns `-1` if we guessed too low
