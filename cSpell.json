@@ -6,6 +6,8 @@
     "Napi",
     "cinderblock",
     "Tacklind",
+    "esbenp",
+    "cpptools",
     "VCCL",
     "cflags",
     "coverallsapp",
