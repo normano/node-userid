@@ -73,7 +73,6 @@ jobs:
         run: npm test
         env:
           MOCHA_IMPORT_OVERRIDE: ../build/Release/userid.node
-          MOCHA_NATIVE_API_TEST: true # I put this in for a reason but cannot, for the life of me, remember or figure out why
           LONG_USERNAME_TEST: UsernameWithMoreThan15Chars
           LONG_GROUPNAME_TEST: GroupnameWithMoreThan15Chars
 
