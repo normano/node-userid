@@ -90,7 +90,8 @@ jobs:
         run: npm ci --ignore-scripts
 
       - name: Run Formatting Checks
-        run: npm run prettier
+        # We allow any line endings in code but always commit and expect only LF
+        run: npm run prettier -- --end-of-line lf
 
       - name: Run Spelling Checks
         run: npm run spelling
