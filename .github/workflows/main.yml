@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Install Node dependencies without building locally
-        run: npm install --ignore-scripts
+        run: npm ci --ignore-scripts
 
       - name: 'Debug: List post build files'
         run: find * \( -path node_modules -o -path .git \) -print -prune -o -type f -print | tee /tmp/build.list
@@ -50,7 +50,7 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Install Node dependencies without building locally
-        run: npm install
+        run: npm ci
 
       - name: 'Debug: List post build files'
         run: find * \( -path node_modules -o -path .git \) -print -prune -o -type f -print | tee /tmp/build.list
@@ -71,7 +71,7 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Install Node dependencies without building locally
-        run: npm install --ignore-scripts
+        run: npm ci --ignore-scripts
 
       - name: Run Formatting Checks
         run: npm run prettier
@@ -97,7 +97,7 @@ jobs:
         run: node --version
 
       - name: Build
-        run: npm install
+        run: npm ci
         env:
           # Turns on Gcov instrumentation in compiled binaries
           GENERATE_COVERAGE: 'yes'
