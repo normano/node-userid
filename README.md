@@ -38,6 +38,33 @@ console.log('uid 0 name is:', userid.username(0));
 console.log('gid 0 name is:', userid.groupname(0));
 ```
 
+## Development
+
+This repository is setup for development with Visual Studio Code.
+Other environments should be possible, just replicate the important settings in [`.vscode`](.vscode).
+To get IntelliSense to work fully, add a line like this to your user `settings.json`:
+
+```json
+{
+  "local.node-gyp.node-cache": "C:/Users/<username>/AppData/Local/node-gyp/Cache/<version>"
+}
+```
+
+We use Npm, not Yarn.
+If you try to use `yarn`, it will error.
+
+### Windows
+
+Development on Windows is possible but there are two main hurdles.
+
+The initial problem is that we've marked this package as not compatible with Windows.
+Simply remove that line from the `package.json` before running `npm install`.
+Please do not commit this change.
+
+The other problem is that we cannot actually compile the software on a Windows machine because the bindings to the operating system calls are missing.
+
+Pull requests that would bring Windows into the fold would be welcome.
+
 <!-- TODO: Full Docs -->
 
 ## History

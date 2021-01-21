@@ -1,10 +1,10 @@
 {
   "configurations": [
     {
-      "name": "gcc",
+      "name": "node-gyp N-API",
       "includePath": [
         "${workspaceFolder}/node_modules/node-addon-api",
-        "${workspaceFolder}/node_modules/node-addon-api/external-napi"
+        "${config:local.node-gyp.node-cache}/include/node"
       ]
     }
   ],
