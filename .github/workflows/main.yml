@@ -73,6 +73,7 @@ jobs:
         run: npm test
         env:
           MOCHA_IMPORT_OVERRIDE: ../build/Release/userid.node
+          MOCHA_SKIP_JAVASCRIPT_API: true
           LONG_USERNAME_TEST: UsernameWithMoreThan15Chars
           LONG_GROUPNAME_TEST: GroupnameWithMoreThan15Chars
 

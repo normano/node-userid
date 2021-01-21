@@ -52,19 +52,22 @@ describe('userid', () => {
     isShouldHandleErrorsConsistently(userid.ids, 'string', 'username', 'username not found');
   });
 
-  describe('method userid.uid', () => {
-    it(`should load user's uid [${shellUid}] by username [${shellUsername}]`, () => {
-      userid.uid(shellUsername).should.equal(shellUid);
-    });
-
-    if (longUsername) {
-      it(`should work with a long username [${longUsername}] that exists`, () => {
-        userid.uid(longUsername).should.equal(longUsernameUid);
+  if (!process.env.MOCHA_SKIP_JAVASCRIPT_API) {
+    // This method is defined in JavaScript. If we're importing the `.node` module directly, we cannot test this function.
+    describe('method userid.uid', () => {
+      it(`should load user's uid [${shellUid}] by username [${shellUsername}]`, () => {
+        userid.uid(shellUsername).should.equal(shellUid);
       });
-    }
 
-    isShouldHandleErrorsConsistently(userid.uid, 'string', 'username', 'username not found');
-  });
+      if (longUsername) {
+        it(`should work with a long username [${longUsername}] that exists`, () => {
+          userid.uid(longUsername).should.equal(longUsernameUid);
+        });
+      }
+
+      isShouldHandleErrorsConsistently(userid.uid, 'string', 'username', 'username not found');
+    });
+  }
 
   describe('method userid.username', () => {
     it(`should load a username [${shellUsername}] by uid [${shellUid}]`, () => {
