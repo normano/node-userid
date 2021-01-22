@@ -39,13 +39,13 @@ jobs:
       - name: 'Update dependencies'
         run: npx npm-check-updates -u
 
-      - name: Show differences
-        run: git diff
-
         # Install dependencies and Build
 
       - name: Install dependencies and Build (using `npm install`)
         run: npm install
+
+      - name: Show differences
+        run: git diff
 
         # Test long usernames on Linux
 
