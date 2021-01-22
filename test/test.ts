@@ -30,30 +30,36 @@ const longUsernameUid = longUsername ? Number(execToString(`id -u ${longUsername
 const longGroupname = process.env.LONG_GROUPNAME_TEST;
 const longGroupnameGid = longGroupname ? Number(execToString(`id -g ${longGroupname}`)) : -1;
 
-describe('userid', () => {
-  describe('method userid.ids', () => {
-    it(`should load a user's uid [${shellUid}] and gid [${shellGid}] by username [${shellUsername}] as an object`, () => {
-      const libIds = userid.ids(shellUsername);
+function testIdsMethod() {
+  it(`should load a user's uid [${shellUid}] and gid [${shellGid}] by username [${shellUsername}] as an object`, () => {
+    const libIds = userid.ids(shellUsername);
 
-      libIds.uid.should.equal(shellUid);
-      libIds.gid.should.equal(shellGid);
-    });
-
-    if (longUsername) {
-      it(`should work with a long username [${longUsername}] that exists`, () => {
-        const libLongIds = userid.ids(longUsername);
-
-        libLongIds.uid.should.equal(longUsernameUid);
-        // TODO: Test this properly
-        // libLongIds.gid.should.equal(shellGid);
-      });
-    }
-
-    isShouldHandleErrorsConsistently(userid.ids, 'string', 'username', 'username not found');
+    libIds.uid.should.equal(shellUid);
+    libIds.gid.should.equal(shellGid);
   });
 
-  if (!process.env.MOCHA_SKIP_JAVASCRIPT_API) {
-    // This method is defined in JavaScript. If we're importing the `.node` module directly, we cannot test this function.
+  if (longUsername) {
+    it(`should work with a long username [${longUsername}] that exists`, () => {
+      const libLongIds = userid.ids(longUsername);
+
+      libLongIds.uid.should.equal(longUsernameUid);
+      // TODO: Test this properly
+      // libLongIds.gid.should.equal(shellGid);
+    });
+  }
+
+  isShouldHandleErrorsConsistently(userid.ids, 'string', 'username', 'username not found');
+}
+
+describe('userid', () => {
+  describe('method userid.ids', testIdsMethod);
+
+  // If we're using the Node API
+  if (process.env.MOCHA_USE_NODE_API) {
+    // this method matches `userid.ids` for historical compatibility
+    describe('method userid.uid (should match method `userid.ids`)', testIdsMethod);
+  } else {
+    // Otherwise it has its own signature
     describe('method userid.uid', () => {
       it(`should load user's uid [${shellUid}] by username [${shellUsername}]`, () => {
         userid.uid(shellUsername).should.equal(shellUid);

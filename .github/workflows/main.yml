@@ -51,7 +51,7 @@ jobs:
 
   test-native-api:
     # We fully support importing/requiring the native API `.node` directly.
-    # It is just missing one function that is defined in the JavaScript API, so we skip that test
+    # For historical reasons, the Native Node API is slightly different than the JavaScript API, so we have slightly different tests.
 
     name: Test - Native API Stability
 
@@ -80,7 +80,7 @@ jobs:
         run: npm test
         env:
           MOCHA_IMPORT_OVERRIDE: ../build/Release/userid.node
-          MOCHA_SKIP_JAVASCRIPT_API: true
+          MOCHA_USE_NODE_API: true
           LONG_USERNAME_TEST: UsernameWithMoreThan15Chars
           LONG_GROUPNAME_TEST: GroupnameWithMoreThan15Chars
 
