@@ -72,6 +72,7 @@ Pull requests that would bring Windows into the fold would be welcome.
 - Automatic dependency update, test, and publish
 - Publish pre-built versions of packages
 - Automatic testing of latest versions of Node/OSes
+- C++ Linting with `clang-tidy` (or equivalent)
 - Windows compatibility?
   - WSL
   - Windows equivalent native methods
