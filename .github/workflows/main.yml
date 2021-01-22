@@ -47,8 +47,6 @@ jobs:
           LONG_GROUPNAME_TEST: GroupnameWithMoreThan15Chars
 
   test-native-api:
-    needs: [install-and-run-from-git]
-
     name: Test - Native API Stability
 
     runs-on: ubuntu-latest
