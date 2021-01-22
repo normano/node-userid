@@ -71,6 +71,7 @@ Pull requests that would bring Windows into the fold would be welcome.
 
 - Automatic dependency update, test, and publish
 - Publish pre-built versions of packages
+- Don't depend on coveralls for coverage reports (maybe with [Standalone Stats](https://github.com/cinderblock/github-action-standalone-stats))
 - Automatic testing of latest versions of Node/OSes
 - C++ Linting with `clang-tidy` (or equivalent)
 - Windows compatibility?
