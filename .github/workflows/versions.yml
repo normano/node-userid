@@ -32,19 +32,39 @@ jobs:
       - name: 'Debug: Node version'
         run: node --version
 
-      - name: Build
+        # Install dependencies and Build
+
+      - name: Install dependencies and Build (using `npm ci`)
+        if: matrix.node >= 10
         run: npm ci
 
+      - name: Install dependencies and Build (using `npm install`)
+        if: matrix.node < 10
+        run: npm install
+
+        # Test long usernames on Linux
+
       - name: Add long username for test
+        if: runner.os == 'Linux'
         run: sudo useradd UsernameWithMoreThan15Chars
 
       - name: Add long groupname for test
+        if: runner.os == 'Linux'
         run: sudo useradd GroupnameWithMoreThan15Chars
 
       - name: Test
         run: npm test
+        if: runner.os == 'Linux'
         # Mocha does not work on 4/5
         if: matrix.node >= 6
         env:
           LONG_USERNAME_TEST: UsernameWithMoreThan15Chars
           LONG_GROUPNAME_TEST: GroupnameWithMoreThan15Chars
+
+        # Don't test long usernames on macOS
+
+      - name: Test
+        run: npm test
+        if: runner.os == 'macOS'
+        # Mocha does not work on 4/5
+        if: matrix.node >= 6
