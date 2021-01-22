@@ -38,6 +38,8 @@ console.log('uid 0 name is:', userid.username(0));
 console.log('gid 0 name is:', userid.groupname(0));
 ```
 
+<!-- TODO: Full Docs -->
+
 ## Development
 
 This repository is setup for development with Visual Studio Code.
@@ -65,7 +67,14 @@ The other problem is that we cannot actually compile the software on a Windows m
 
 Pull requests that would bring Windows into the fold would be welcome.
 
-<!-- TODO: Full Docs -->
+### Improvements to be made
+
+- Automatic dependency update, test, and publish
+- Publish pre-built versions of packages
+- Automatic testing of latest versions of Node/OSes
+- Windows compatibility?
+  - WSL
+  - Windows equivalent native methods
 
 ## History
 
