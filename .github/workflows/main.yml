@@ -47,6 +47,9 @@ jobs:
           LONG_GROUPNAME_TEST: GroupnameWithMoreThan15Chars
 
   test-native-api:
+    # We fully support importing/requiring the native API `.node` directly.
+    # It is just missing one function that is defined in the JavaScript API, so we skip that test
+
     name: Test - Native API Stability
 
     runs-on: ubuntu-latest
