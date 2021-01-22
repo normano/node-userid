@@ -16,7 +16,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest]
-        node: [6, 7, 8, 9, 10, 11, 12, 13, 14, 15] # There are problems on various architectures on lower versions that are more work to fix. Please open an issue if you need more version support
+        node: [7, 8, 9, 10, 11, 12, 13, 14, 15] # There are problems on various architectures on lower versions that are more work to fix. Please open an issue if you need more version support
 
     runs-on: ${{ matrix.os }}
 
