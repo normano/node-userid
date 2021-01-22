@@ -1,0 +1,71 @@
+name: Update Dependencies and Test
+
+# Continuously test this package with all versions of node on various OSes with latest automatically upgraded dependencies
+
+on:
+  push:
+  pull_request:
+  repository_dispatch:
+  schedule:
+    # Daily at 5:00am
+    - cron: 0 5 * * *
+
+jobs:
+  test-matrix:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        node: [10, 11, 12, 13, 14, 15] # There are problems on various architectures on lower versions that are more work to fix. Please open an issue if you need more version support
+
+    runs-on: ${{ matrix.os }}
+
+    name: Node ${{ matrix.node }} on ${{ matrix.os }}
+
+    steps:
+      - name: Checkout latest code
+        uses: actions/checkout@v1
+
+      - name: Install Node ${{ matrix.node }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: 'Debug: Node version'
+        run: node --version
+
+        # Update all dependencies
+
+      - name: 'Update dependencies'
+        run: npx npm-check-updates -u
+
+      - name: Show differences
+        run: git diff
+
+        # Install dependencies and Build
+
+      - name: Install dependencies and Build (using `npm install`)
+        run: npm install
+
+        # Test long usernames on Linux
+
+      - name: Add long username for test
+        if: runner.os == 'Linux'
+        run: sudo useradd UsernameWithMoreThan15Chars
+
+      - name: Add long groupname for test
+        if: runner.os == 'Linux'
+        run: sudo useradd GroupnameWithMoreThan15Chars
+
+      - name: Test
+        run: npm test
+        if: runner.os == 'Linux'
+        env:
+          LONG_USERNAME_TEST: UsernameWithMoreThan15Chars
+          LONG_GROUPNAME_TEST: GroupnameWithMoreThan15Chars
+
+        # Don't test long usernames on macOS
+
+      - name: Test
+        run: npm test
+        if: runner.os == 'macOS'
