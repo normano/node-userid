@@ -43,8 +43,8 @@ function testIdsMethod() {
       const libLongIds = userid.ids(longUsername);
 
       libLongIds.uid.should.equal(longUsernameUid);
-      // TODO: Test this properly
-      // libLongIds.gid.should.equal(shellGid);
+
+      // TODO: Test `libLongIds.gid.should.equal(shellGid)` properly
     });
   }
 
