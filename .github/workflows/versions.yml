@@ -36,12 +36,7 @@ jobs:
 
         # Install dependencies and Build
 
-      - name: Install dependencies and Build (using `npm ci`)
-        if: matrix.node >= 10
-        run: npm ci
-
-      - name: Install dependencies and Build (using `npm install`)
-        if: matrix.node < 10
+      - name: Install dependencies and Build using `npm install` to get latest non-breaking changes
         run: npm install
 
         # Test long usernames on Linux
