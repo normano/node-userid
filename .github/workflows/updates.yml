@@ -23,6 +23,9 @@ jobs:
     name: Node ${{ matrix.node }} on ${{ matrix.os }}
 
     steps:
+      - name: Enable color for Npm output
+        run: echo color = always >> .npmrc
+
       - name: Checkout latest code
         uses: actions/checkout@v1
 
@@ -57,7 +60,7 @@ jobs:
         if: runner.os == 'Linux'
         run: sudo useradd GroupnameWithMoreThan15Chars
 
-      - name: Test
+      - name: Test (with long names)
         run: npm test
         if: runner.os == 'Linux'
         env:
@@ -66,6 +69,6 @@ jobs:
 
         # Don't test long usernames on macOS
 
-      - name: Test
+      - name: Test (without long names)
         run: npm test
         if: runner.os == 'macOS'
