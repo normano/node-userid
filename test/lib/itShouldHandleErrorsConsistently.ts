@@ -14,7 +14,7 @@ export const nonExistentUserGroup = process.env.NONEXISTENT_NAME ?? '';
  * @param {String} errorMessage string when not found
  * @param {Object} options Extra options
  */
-export function isShouldHandleErrorsConsistently(
+export function itShouldHandleErrorsConsistently(
   test: (...args: any[]) => any,
   argumentType: 'string' | 'number',
   missingMessage: string,

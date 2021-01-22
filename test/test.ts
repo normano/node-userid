@@ -1,7 +1,7 @@
 import 'should';
 
 import { execToString } from './lib/execToString';
-import { isShouldHandleErrorsConsistently } from './lib/isShouldHandleErrorsConsistently';
+import { itShouldHandleErrorsConsistently } from './lib/itShouldHandleErrorsConsistently';
 
 import * as types from '../lib/userid';
 
@@ -48,7 +48,7 @@ function testIdsMethod() {
     });
   }
 
-  isShouldHandleErrorsConsistently(userid.ids, 'string', 'username', 'username not found');
+  itShouldHandleErrorsConsistently(userid.ids, 'string', 'username', 'username not found');
 }
 
 describe('userid', () => {
@@ -71,7 +71,7 @@ describe('userid', () => {
         });
       }
 
-      isShouldHandleErrorsConsistently(userid.uid, 'string', 'username', 'username not found');
+      itShouldHandleErrorsConsistently(userid.uid, 'string', 'username', 'username not found');
     });
   }
 
@@ -86,7 +86,7 @@ describe('userid', () => {
       });
     }
 
-    isShouldHandleErrorsConsistently(userid.username, 'number', 'uid', 'uid not found');
+    itShouldHandleErrorsConsistently(userid.username, 'number', 'uid', 'uid not found');
   });
 
   describe('method userid.gid', () => {
@@ -100,7 +100,7 @@ describe('userid', () => {
       });
     }
 
-    isShouldHandleErrorsConsistently(userid.gid, 'string', 'groupname', 'groupname not found');
+    itShouldHandleErrorsConsistently(userid.gid, 'string', 'groupname', 'groupname not found');
   });
 
   describe('method userid.groupname', () => {
@@ -114,7 +114,7 @@ describe('userid', () => {
       });
     }
 
-    isShouldHandleErrorsConsistently(userid.groupname, 'number', 'gid', 'gid not found');
+    itShouldHandleErrorsConsistently(userid.groupname, 'number', 'gid', 'gid not found');
   });
 
   describe('method userid.gids', () => {
@@ -125,6 +125,6 @@ describe('userid', () => {
     // TODO: test for a long username
     // TODO: test for a long groupname in returned list
 
-    isShouldHandleErrorsConsistently(userid.gids, 'string', 'user', 'getpwnam');
+    itShouldHandleErrorsConsistently(userid.gids, 'string', 'user', 'getpwnam');
   });
 });
