@@ -1,5 +1,7 @@
 name: Test All Versions
 
+# Continuously test this package with all versions of node on various OSes
+
 on:
   push:
   pull_request:
