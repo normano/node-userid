@@ -41,6 +41,8 @@ jobs:
 
       - name: 'Update dependencies'
         run: npx npm-check-updates -u
+        env:
+          FORCE_COLOR: 1
 
         # Install dependencies and Build
 
