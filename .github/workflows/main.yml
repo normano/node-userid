@@ -43,7 +43,7 @@ jobs:
         run: sudo useradd GroupnameWithMoreThan15Chars
 
       - name: Run Tests with Prepared Git Dependency
-        run: npm test
+        run: npm test -- --color
         env:
           MOCHA_IMPORT_OVERRIDE: userid
           LONG_USERNAME_TEST: UsernameWithMoreThan15Chars
@@ -77,7 +77,7 @@ jobs:
         run: sudo useradd GroupnameWithMoreThan15Chars
 
       - name: Run Tests with Prepared Git Dependency
-        run: npm test
+        run: npm test -- --color
         env:
           MOCHA_IMPORT_OVERRIDE: ../build/Release/userid.node
           MOCHA_USE_NODE_API: true

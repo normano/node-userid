@@ -53,7 +53,7 @@ jobs:
         run: sudo useradd GroupnameWithMoreThan15Chars
 
       - name: Test (with long names)
-        run: npm test
+        run: npm test -- --color
         if: runner.os == 'Linux'
         env:
           LONG_USERNAME_TEST: UsernameWithMoreThan15Chars
@@ -62,5 +62,5 @@ jobs:
         # Don't test long usernames on macOS
 
       - name: Test (without long names)
-        run: npm test
+        run: npm test -- --color
         if: runner.os == 'macOS'
