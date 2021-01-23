@@ -50,7 +50,7 @@ jobs:
         run: npm install
 
       - name: Show differences
-        run: git diff
+        run: git diff --color=always
 
         # Test long usernames on Linux
 
